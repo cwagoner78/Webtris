@@ -1,0 +1,18 @@
+:root {
+    --square-width: 20px;
+    --square-height: 20px;
+    --repeatX: 10;
+    --repeatY: 20;
+}
+
+.square {
+    width: var(--square-width);
+    height: var(--square-height);
+    background-color: #000;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(var(--repeatX), var(--square-width)); 
+    grid-template-rows: repeat(var(--repeatY), var(--square-height));
+}
