@@ -19,6 +19,29 @@ let activeBlockRotation = 0;
 setInterval(() => {
     console.log(activeBlock, activeBlockPosition, activeBlockRotation);
     activeBlockPosition[0]++; //rows
+
+    //remove filled squares before rendering new blocks
+    for (let row = 0; row < gridSizeY; row++){
+        for (let col = 0; col < gridSizeX; col++){
+            squares[row][col].classList.remove("filled");
+        }
+    }
+
+    //render block position and fill squares
+    for (let localRow = 0; localRow < 4; localRow++){
+        for (let localCol = 0; localCol < 4; localCol++){
+            let currentPosX = activeBlockPosition[0] + localRow;
+            let currentPosY = activeBlockPosition[1] + localCol;
+            console.log("Active Block Position: ", currentPosX, currentPosY);
+    
+            if (blockShape_T[localRow][localCol] == 1){
+                squares[currentPosX][currentPosY].classList.add("filled");      
+            } 
+            
+        }
+    
+    }
+
 }, 1000);
 
 //create grid
@@ -32,13 +55,3 @@ for (let row = 0; row < gridSizeY; row++){
     }
 }
 
-for (let localRow = 0; localRow < 4; localRow++){
-    for (let localCol = 0; localCol < 4; localCol++){
-        let currentPosX = activeBlockPosition[0] + localRow;
-        let currentPosY = activeBlockPosition[1] + localCol;
-        console.log("Active Block Position: ", currentPosX, currentPosY);
-
-        if (blockShape_T[localRow][localCol] == 1) squares[currentPosX][currentPosY].classList.add("filled");
-    }
-
-}
