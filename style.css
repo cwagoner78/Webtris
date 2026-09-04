@@ -11,6 +11,11 @@
     background-color: #000;
 }
 
+.filled {
+    background-color: gray;
+
+}
+
 #grid {
     display: grid;
     grid-template-columns: repeat(var(--repeatX), var(--square-width)); 

@@ -30,12 +30,15 @@ for (let row = 0; row < gridSizeY; row++){
         grid.appendChild(square);
         squares[row].push(square);
     }
-    
-for (let blockPiece = 0; blockPiece < blockShape_T; i++){
-     //if blockPiece > 0 (do the thing);
-
 }
 
+for (let localRow = 0; localRow < 4; localRow++){
+    for (let localCol = 0; localCol < 4; localCol++){
+        let currentPosX = activeBlockPosition[0] + localRow;
+        let currentPosY = activeBlockPosition[1] + localCol;
+        console.log("Active Block Position: ", currentPosX, currentPosY);
 
+        if (blockShape_T[localRow][localCol] == 1) squares[currentPosX][currentPosY].classList.add("filled");
+    }
 
 }
