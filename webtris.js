@@ -1,4 +1,8 @@
 
+//Game Setup
+
+let gameSpeed = 1000;
+
 //grid rendering
 const grid = document.getElementById("grid");
 const gridSizeX = 10;
@@ -15,6 +19,11 @@ const blockShape_T = [
 let activeBlock = blockShape_T;
 let activeBlockPosition = [0, 0]; //rows, columns
 let activeBlockRotation = 0;
+
+//User input
+let moveBlockLeft = addEventListener("keydown", event => {if (event.code==="KeyA") activeBlockPosition[1]--;}) 
+let moveBlockRight = addEventListener("keydown", event => {if (event.code==="KeyD") activeBlockPosition[1]++;})   
+
 
 setInterval(() => {
     console.log(activeBlock, activeBlockPosition, activeBlockRotation);
@@ -37,12 +46,9 @@ setInterval(() => {
             if (blockShape_T[localRow][localCol] == 1){
                 squares[currentPosX][currentPosY].classList.add("filled");      
             } 
-            
         }
-    
     }
-
-}, 1000);
+}, gameSpeed);
 
 //create grid
 for (let row = 0; row < gridSizeY; row++){
