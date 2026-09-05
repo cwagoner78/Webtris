@@ -1,6 +1,5 @@
 
 //Game Setup
-
 let gameSpeed = 1000;
 
 //grid rendering
@@ -8,23 +7,18 @@ const grid = document.getElementById("grid");
 const gridSizeX = 10;
 const gridSizeY = 20;
 const squares = [];
-
-
-
-//blocks and shapes
-let blockSize = 3;
-const blockShape_T = [
-    [0, 1, 0],
-    [1, 1, 1],
-    [0, 0, 0],
-    ]
-
-let activeBlock = blockShape_T;
+let activeBlock = blockShape_J;
 let activeBlockPosition = [0, 0]; //rows, columns
 
-
 //User input
-addEventListener("keydown", event => {ControlBock(event, blockSize)}) 
+addEventListener("keydown", event => {ControlBock(event, blockSize)})
+
+//will eventually go into the block spawner
+if (activeBlock != blockShape_I && activeBlock != blockShape_O) {
+    blockSize = 3
+} else {
+    blockSize = 4
+}
  
 //Tick - game speed
 setInterval(() => {
@@ -46,6 +40,9 @@ for (let row = 0; row < gridSizeY; row++){
 
 function UpdateBlock ()
 {
+    
+
+
     //remove filled squares before rendering new blocks
     for (let row = 0; row < gridSizeY; row++){
         for (let col = 0; col < gridSizeX; col++){
